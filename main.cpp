@@ -2,25 +2,24 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <bitset>
+#include "StatisticalTest.h"
 
 int main() {
-    std::string letter;
-    int i;
-    std::string line;
-    std::vector<std::string> result;
-    std::ifstream reader("../lfsrs/output.txt");
+    std::ifstream reader("../lfsrs/test2.txt");
     if (!reader) {
         std::cout << "Error opening input file" << std::endl;
         return -1;
     }
-
-    for (i = 0; !reader.eof(); i++) {
+    std::vector<bool> result;
+    std::string line;
+    for (int i = 0; !reader.eof(); i++) {
         getline(reader, line);
-        result.push_back(line);
+        if (line != "0" && line != "1") { break; }
+        result.push_back(line == "1");
     }
-    for (auto const &item : result) {
-        std::cout << item << std::endl;
-    }
-    
+    StatisticalTest st(result);
+    std::cout << st.frequencyMonobit() << std::endl;
+    std::cout << st.blockFrequency(3) << std::endl;
     return 0;
 }
