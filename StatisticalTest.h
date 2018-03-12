@@ -18,14 +18,6 @@ public:
 
     explicit StatisticalTest(std::vector<bool> input);
 
-    /**
-     * 2.13 NIST Cumulative Sums (Cusum) Test
-     * If return value is > 0.01, accept the sequence as random
-     * Forward mode=1 --- Backward mode=0
-     * @return
-     */
-    double CumulativeSums(bool mode);
-
     double frequencyMonoBit();
 
     double blockFrequency(int blockSize);
@@ -34,7 +26,6 @@ public:
 
 private:
     std::vector<bool> result;
-    std::vector<int> partialSums;
 
 };
 

@@ -6,23 +6,6 @@
 
 StatisticalTest::StatisticalTest(std::vector<bool> input) {
     result = std::move(input);
-    int sum = 0;
-    for (int i = 0; i < result.size(); i++) {
-        for (unsigned long j = 0; j <= i; j++) {
-            sum += (result.at(j) ? 1 : -1);
-        }
-        partialSums.push_back(sum);
-        sum = 0;
-    }
-}
-
-double StatisticalTest::CumulativeSums(bool mode) {
-
-    std::vector<int> partialSumsDer;
-    partialSumsDer = partialSums;
-    partialSumsDer.push_back(0);
-    partialSumsDer.insert(partialSumsDer.begin(), 0);
-    return 0;
 }
 
 double StatisticalTest::frequencyMonoBit() {
