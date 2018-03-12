@@ -12,6 +12,7 @@
 #include <vector>
 #include <cmath>
 #include <boost/math/special_functions/gamma.hpp>
+
 class StatisticalTest {
 public:
 
@@ -25,9 +26,11 @@ public:
      */
     double CumulativeSums(bool mode);
 
-    double frequencyMonobit();
+    double frequencyMonoBit();
 
     double blockFrequency(int blockSize);
+
+    double TestStatisticAndReferenceDistribution();
 
 private:
     std::vector<bool> result;

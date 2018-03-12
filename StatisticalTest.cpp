@@ -25,7 +25,7 @@ double StatisticalTest::CumulativeSums(bool mode) {
     return 0;
 }
 
-double StatisticalTest::frequencyMonobit() {
+double StatisticalTest::frequencyMonoBit() {
     int sum = 0;
     for (auto const &item: result) {
         sum += (item ? 1 : -1);
@@ -55,4 +55,25 @@ double StatisticalTest::blockFrequency(const int blockSize) {
     double x2obs = (4 * (blockSize * (summationNotation)));
     double result = boost::math::gamma_p(blocksNum / 2.00, x2obs / 2.00);
     return (1 - result);
+}
+
+double StatisticalTest::TestStatisticAndReferenceDistribution() {
+    double sum = 0;
+    for (auto &&i : result) {
+        sum += (i ? 1 : 0);
+    }
+    double p = sum / result.size();
+    double tau = 2 / (sqrt(result.size()));
+    if (fabs(p - double(1 / 2)) >= tau) {
+        return 0;
+    }
+    sum = 1;
+    for (unsigned long i = 0; i < result.size() - 1; ++i) {
+        sum += (result.at(i) == result.at(i + 1) ? 0 : 1);
+    }
+    double up = fabs(sum - (2.00 * double(result.size()) * p * (1.00 - p)));
+    double down = (2.00 * sqrt(2.00 * double(result.size())) * p * (1.00 - p));
+    double division = up / down;
+    double out = erfc(division);
+    return out;
 }

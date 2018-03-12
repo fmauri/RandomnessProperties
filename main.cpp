@@ -6,7 +6,7 @@
 #include "StatisticalTest.h"
 
 int main() {
-    std::ifstream reader("../lfsrs/test2.txt");
+    std::ifstream reader("../lfsrs/test3.txt");
     if (!reader) {
         std::cout << "Error opening input file" << std::endl;
         return -1;
@@ -19,7 +19,8 @@ int main() {
         result.push_back(line == "1");
     }
     StatisticalTest st(result);
-    std::cout << st.frequencyMonobit() << std::endl;
+    std::cout << st.frequencyMonoBit() << std::endl;
     std::cout << st.blockFrequency(3) << std::endl;
+    std::cout << st.TestStatisticAndReferenceDistribution() << std::endl;
     return 0;
 }
