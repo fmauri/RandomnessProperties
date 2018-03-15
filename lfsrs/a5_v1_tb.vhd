@@ -87,9 +87,18 @@ begin
   -- time to tell LFSRs to load up some data
   load <= '1';
   -- and give it to them (to one of them, at least)
-  register1 <= "0111101110101111101";
-  register2 <= "1101111011101011111011";
-  register3 <= "01111011101011111011111";
+  -- register1 <= "0101010101010101011";
+  -- register1 <= "0000000000000000000";
+  -- register1 <= "0111111110101111101";
+     register1 <= "0101010101010101010";
+  -- register2 <= "1100001011101011111011";
+  -- register2 <= "0101010101010101010101";
+     register2 <= "1010101010101010101010";
+  -- register2 <= "1111111111111111111111";
+  -- register3 <= "01000111101011111011111";
+  -- register3 <= "01010101010101010101010";
+     register3 <= "01010101010101010101010";
+  -- register3 <= "11111111111111111111111";
   wait until clock'event and clock = '0';
   -- ... and let them run freely
 

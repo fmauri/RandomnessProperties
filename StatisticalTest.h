@@ -22,7 +22,7 @@ public:
 
     double blockFrequency(int blockSize);
 
-    double TestStatisticAndReferenceDistribution();
+    double runsTest();
 
 private:
     std::vector<bool> result;

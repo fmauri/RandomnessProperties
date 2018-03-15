@@ -40,16 +40,16 @@ double StatisticalTest::blockFrequency(const int blockSize) {
     return (1 - result);
 }
 
-double StatisticalTest::TestStatisticAndReferenceDistribution() {
+double StatisticalTest::runsTest() {
     double sum = 0;
     for (auto &&i : result) {
         sum += (i ? 1 : 0);
     }
     double p = sum / result.size();
     double tau = 2 / (sqrt(result.size()));
-    if (fabs(p - double(1 / 2)) >= tau) {
+    /*if (fabs(p - double(1 / 2)) >= tau) {
         return 0;
-    }
+    }*/
     sum = 1;
     for (unsigned long i = 0; i < result.size() - 1; ++i) {
         sum += (result.at(i) == result.at(i + 1) ? 0 : 1);
